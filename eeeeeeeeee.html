@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OP3Hp</title>
+</head>
+<body>
+    <h1>Oblicz ile dni minęło od podanej daty urodziń!</h1>
+    <h2 id="test"></h2>
+    <h2 id="time"></h2>
+    <h3>Odswież stronę aby zaktualizować terażniejszy czas:</h3>
+    <p><b>Podaj datę poniżej.</b></p>
+    <div class = "text">
+        <input type="date" name="date" id="datebtn" class = "btnclass" onchange="NewDate1()">
+        <label for="epicbtn">Podaj datę.</label>
+    </div>
+    <p><b>Naciśnij przycisk aby zobaczyć wynik!</b></p>
+    <button onclick = "btnclick()">Oblicz</button>
+    <p class = "text opcje"><b>Wynik!</b></p>
+    <p id = "result">Mineło ... dni od podanej daty.</p>
+    <script>
+        var tydzien;
+        var second;
+        var minute;
+        var hour;
+        var data1;
+        var diff;
+        var dayresult
+        var obliczenia;
+        var getdate1;
+        var current = new Date();
+        var currentday = current.getDay();
+        if (currentday == 0) {
+            tydzien = "Niedziela";
+        }
+        if (currentday == 1) {
+            tydzien = "Poniedziałek";
+        }
+        if (currentday == 2) {
+            tydzien = "Wtorek";
+        }
+        if (currentday == 3) {
+            tydzien = "Środa";
+        }
+        if (currentday == 4) {
+            tydzien = "Czwartek";
+        }
+        if (currentday == 5) {
+            tydzien = "Piątek";
+        }
+        if (currentday == 6) {
+            tydzien = "Sobota";
+        }
+        var miesiac = current.getMonth();
+        var miesiacname;
+        if (miesiac == 0) {
+            miesiacname = "Styczeń";
+        }
+        if (miesiac == 1) {
+            miesiacname = "Luty";
+        }
+        if (miesiac == 2) {
+            miesiacname = "Marzec";
+        }
+        if (miesiac == 3) {
+            miesiacname = "Kwiecień";
+        }
+        if (miesiac == 4) {
+            miesiacname = "Maj";
+        }
+        if (miesiac == 5) {
+            miesiacname = "Czerwiec";
+        }
+        if (miesiac == 6) {
+            miesiacname = "Lipiec";
+        }        
+        if (miesiac == 7) {
+            miesiacname = "Sierpień";
+        }
+        if (miesiac == 8) {
+            miesiacname = "Wrzesień";
+        }
+        if (miesiac == 9) {
+            miesiacname = "Październik";
+        }
+        if (miesiac == 10) {
+            miesiacname = "Listopad";
+        }
+        if (miesiac == 11) {
+            miesiacname = "Grudzień";
+        }
+        document.getElementById("test").innerHTML = "" + current.getDate() + " " + tydzien + " " + miesiacname + " " + current.getFullYear();
+        document.getElementById("time").innerHTML = "" + current.getHours() + ":" + current.getMinutes() + ":" + current.getSeconds();
+        function NewDate1() {
+            data1 = document.getElementById("datebtn").value;
+            data1 = new Date(data1);
+            diff = current.getTime() - data1.getTime() ;
+            diff = diff + 7200000;
+            dayresult = Math.trunc(diff / (1000 * 3600 * 24));
+            second = Math.floor(diff / 1000);
+            minute = Math.floor(second / 60);
+            hour = Math.floor(minute / 60);
+        }
+        function btnclick() {
+            document.getElementById("result").innerHTML = "Mineło " + dayresult + " dni od podanej daty oraz " + hour + " godzin."; 
+        }
+    </script>
+</body>
+</html>
